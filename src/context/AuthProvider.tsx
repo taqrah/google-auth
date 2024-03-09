@@ -12,7 +12,9 @@ import { auth } from '../firebase/firebase';
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
   const [user, setUser] = useState<User | null>(
-    JSON.parse(localStorage.getItem('user')!)
+    typeof window !== 'undefined'
+      ? JSON.parse(localStorage.getItem('user'))
+      : null
   );
 
   // useEffect(() => {
