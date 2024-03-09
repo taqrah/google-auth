@@ -6,20 +6,21 @@ import {
   GoogleAuthProvider,
   onAuthStateChanged,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
 } from 'firebase/auth';
 import { auth } from '../firebase/firebase';
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(null);
+  const [user, setUser] = useState<User | null>(
+    JSON.parse(localStorage.getItem('user')!)
+  );
 
-  useEffect(() => {
-    const user = localStorage.getItem('user');
-    if (user) {
-      setUser(JSON.parse(user));
-    }
-  }, []);
+  // useEffect(() => {
+  //   const user = localStorage.getItem('user');
+  //   if (user) {
+  //     setUser(JSON.parse(user));
+  //   }
+  // }, []);
 
   const authenticate = () => {
     const provider = new GoogleAuthProvider();
@@ -41,14 +42,16 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
         if (result) {
           toast.success('Sign In successful!', {
             style: { border: '1px solid hsl(147, 86%, 57%)' },
+            position: 'top-center',
           });
         }
       })
       .catch((error) => {
-        toast.error('Signup failed please try again!', {
-          style: { border: '1px solid hsl(354, 84%, 57%)' },
-        });
         console.log(error);
+        toast.error('Failed! please check connection and try again', {
+          style: { border: '1px solid hsl(354, 84%, 57%)' },
+          position: 'top-center',
+        });
       });
   };
 
@@ -64,7 +67,10 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    const logout = onAuthStateChanged(auth, (currUser) => {});
+    const logout = onAuthStateChanged(auth, (currUser) => {
+      console.log(currUser);
+      setUser(currUser);
+    });
 
     return () => {
       logout();

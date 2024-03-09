@@ -1,6 +1,6 @@
 interface User {
-  firstname: string | undefined;
-  lastname: string | undefined;
+  firstname?: string | undefined;
+  lastname?: string | undefined;
   email: string | null;
   photoURL: string | null;
 }

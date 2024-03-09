@@ -34,4 +34,11 @@
   .card{
     background-color: var(--Element);
   }
+  .btn {
+    background-color: var(--Inverted);
+  }
+  .otp {
+    background-color: var(--Element);
+    border-color: var(--Inverted);
+  }
 }

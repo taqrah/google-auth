@@ -16,7 +16,7 @@ const Navbar: React.FC = () => {
       <header className='fixed top-0 w-full shadow-md py-4 lg:py-5 px-6'>
         <div className='flex justify-between items-center max-w-screen-lg mx-auto'>
           <div className='tracking-widest font-semibold'>
-            <Link href='/'>GIST</Link>
+            <Link href='/'>####</Link>
           </div>
           <nav>
             <ul
@@ -25,13 +25,22 @@ const Navbar: React.FC = () => {
             >
               {user ? (
                 <li>
-                  <button type='button' onClick={handleLogout} className=''>
+                  <button
+                    type='button'
+                    onClick={handleLogout}
+                    className=' btn text-darkTxt dark:text-lightTxt p-2 rounded-md hover:shadow-sm min-w-[5rem]'
+                  >
                     Logout
                   </button>
                 </li>
               ) : (
                 <li>
-                  <Link href='/sign-in'>Sign-in</Link>
+                  <Link
+                    href='/sign-in'
+                    className=' btn text-darkTxt dark:text-lightTxt p-2 rounded-md hover:shadow-sm block min-w-[5rem] text-center'
+                  >
+                    Login
+                  </Link>
                 </li>
               )}
               {user ? (

@@ -32,10 +32,10 @@ function Signin() {
           <button
             type='button'
             onClick={handleSignUp}
-            className='bg-white flex items-center gap-4 p-3 rounded-md hover:shadow-sm w-full'
+            className='btn flex items-center gap-4 p-3 rounded-md hover:shadow-sm w-full'
           >
             <Image src={google} alt='google' width={24} height={24} />
-            <span className='dark:text-lightTxt'>Sign in with Google</span>
+            <span className='text-darkTxt dark:text-lightTxt'>Sign in with Google</span>
           </button>
         </div>
 
