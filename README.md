@@ -6,8 +6,8 @@ A simple app that lets you generate OTP's.
 
 Users should be able to:
 
-- Signin with thier google account.
-- See details onthier profile.
+- Signin with their google account.
+- See details on their profile.
 - Get a randomly generated code on login.
 - Generate new code.
 - Copy Generated code.
