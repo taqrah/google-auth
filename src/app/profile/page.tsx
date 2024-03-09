@@ -30,11 +30,11 @@ function Profile() {
         </div>
         <div className='flex gap-2'>
           <h2 className='font-semibold'>First Name:</h2>
-          <p>{user?.firstname}</p>
+          <p>{user.firstname}</p>
         </div>
         <div className='flex gap-2'>
           <h2 className='font-semibold'>Last Name:</h2>
-          <p>{user?.lastname}</p>
+          <p>{user.lastname}</p>
         </div>
         <div className='flex gap-2'>
           <h2 className='font-semibold'>Email:</h2>

@@ -31,7 +31,6 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
     signInWithPopup(auth, provider)
       .then((result) => {
         const user = result.user;
-        console.log(user);
 
         const userDetails = {
           email: user.email,
@@ -71,8 +70,13 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
 
   useEffect(() => {
     const logout = onAuthStateChanged(auth, (currUser) => {
-      console.log(currUser);
-      setUser(currUser);
+      const currentUser = {
+        firstname: currUser?.providerData[0].displayName?.split(' ')[0],
+        lastname: currUser?.providerData[0].displayName?.split(' ')[1],
+        email: currUser?.email,
+        photoURL: currUser?.photoURL,
+      };
+      setUser(currentUser);
     });
 
     return () => {

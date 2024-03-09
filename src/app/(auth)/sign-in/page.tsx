@@ -21,7 +21,7 @@ function Signin() {
   }, [user]);
 
   return (
-    <div className='min-h-screen grid place-content-center'>
+    <div className='h-screen grid place-content-center'>
       <div className='card flex justify-between p-6 flex-col gap-5 rounded-md shadow-md min-h-[20rem] min-w-[20rem]'>
         <div className='mt-4'>
           <h1 className='font-bold text-4xl'>Welcome</h1>

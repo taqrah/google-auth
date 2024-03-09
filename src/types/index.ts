@@ -1,8 +1,8 @@
 interface User {
-  firstname?: string | undefined;
-  lastname?: string | undefined;
-  email: string | null;
-  photoURL: string | null;
+  firstname: string | undefined;
+  lastname: string | undefined;
+  email: string | null | undefined;
+  photoURL: string | null | undefined;
 }
 
 interface AuthContextValues {
