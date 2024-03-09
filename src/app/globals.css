@@ -1,0 +1,37 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --Text: hsl(200, 15%, 8%); /* Light Mode Text */
+  --Background: hsl(0, 0%, 92%); /* Light Mode Background */
+  --Element: hsl(0, 0%, 100%); /* Light Mode Elements */
+  --Accent: hsl(0, 0%, 52%); /* Light Mode Accent */
+  --Inverted: hsl(214, 7%, 19%); /* Dark Mode Inverted color */
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --Text: hsl(0, 0%, 100%); /* Dark Mode Text */
+    --Background: hsl(206 9% 15%); /* Dark Mode Background */
+    --Element: hsl(214, 7%, 19%); /* Dark Mode Elements */
+    --Accent: hsl(225, 7%, 24%); /* Dark Mode Accent */
+    --Inverted: hsl(0, 0%, 100%); /* Dark Mode Inverted color */
+  }
+}
+
+@layer base {
+  body {
+    background: var(--Background);
+    color: var(--Text);
+  }
+  header{
+    background: var(--Element);
+    color: var(--Text);
+  }
+}
+@layer utilities {
+  .card{
+    background-color: var(--Element);
+  }
+}
