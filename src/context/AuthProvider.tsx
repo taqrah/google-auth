@@ -11,18 +11,19 @@ import {
 import { auth } from '../firebase/firebase';
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<User | null>(
-    typeof window !== 'undefined'
-      ? JSON.parse(localStorage.getItem('user'))
-      : null
-  );
+  // const userStatus =
+  //   typeof window !== 'undefined'
+  //     ? JSON.parse(localStorage.getItem('user')!)
+  //     : null;
 
-  // useEffect(() => {
-  //   const user = localStorage.getItem('user');
-  //   if (user) {
-  //     setUser(JSON.parse(user));
-  //   }
-  // }, []);
+  const [user, setUser] = useState<User | null>(null);
+
+  useEffect(() => {
+    const user = localStorage.getItem('user');
+    if (user) {
+      setUser(JSON.parse(user));
+    }
+  }, []);
 
   const authenticate = () => {
     const provider = new GoogleAuthProvider();
