@@ -11,10 +11,10 @@ import {
 import { auth } from '../firebase/firebase';
 
 function AuthProvider({ children }: { children: React.ReactNode }) {
-  // const userStatus =
-  //   typeof window !== 'undefined'
-  //     ? JSON.parse(localStorage.getItem('user')!)
-  //     : null;
+  const userStatus =
+    typeof window !== 'undefined'
+      ? JSON.parse(localStorage.getItem('user')!)
+      : null;
 
   const [user, setUser] = useState<User | null>(null);
 
@@ -69,18 +69,22 @@ function AuthProvider({ children }: { children: React.ReactNode }) {
   };
 
   useEffect(() => {
-    const logout = onAuthStateChanged(auth, (currUser) => {
-      const currentUser = {
-        firstname: currUser?.providerData[0].displayName?.split(' ')[0],
-        lastname: currUser?.providerData[0].displayName?.split(' ')[1],
-        email: currUser?.email,
-        photoURL: currUser?.photoURL,
-      };
-      setUser(currentUser);
+    const unsubscribe = onAuthStateChanged(auth, (currUser) => {
+      if (currUser) {
+        const currentUser = {
+          firstname: currUser?.providerData[0].displayName?.split(' ')[0],
+          lastname: currUser?.providerData[0].displayName?.split(' ')[1],
+          email: currUser?.email,
+          photoURL: currUser?.photoURL,
+        };
+        setUser(currentUser);
+      } else {
+        setUser(null);
+      }
     });
 
     return () => {
-      logout();
+      unsubscribe();
     };
   }, []);
 

@@ -1,6 +1,5 @@
-import Image from 'next/image';
-import copy from '/public/copy.svg';
 import { useEffect, useState } from 'react';
+import { Copy } from './icons';
 
 function OtpField() {
   const [otp, setOtp] = useState(['', '', '', '', '']);
@@ -54,7 +53,7 @@ function OtpField() {
           className='btn text-darkTxt dark:text-lightTxt flex items-center gap-4 p-3 rounded-md hover:shadow-sm w-fit'
         >
           <span className='sr-only'>Copy OTP</span>
-          <Image src={copy} alt='copy otp' width={24} height={24} />
+          <Copy aria-hidden='true'/>
         </button>
         <button
           type='button'

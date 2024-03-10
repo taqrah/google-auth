@@ -2,7 +2,7 @@ import Link from 'next/link';
 import { useContext } from 'react';
 import AuthContext from '@/context/AuthContext';
 import Image from 'next/image';
-import vercel from '../../public/next.svg';
+import { Home } from './icons';
 
 const Navbar: React.FC = () => {
   const { user, logout } = useContext(AuthContext);
@@ -16,7 +16,9 @@ const Navbar: React.FC = () => {
       <header className='fixed top-0 w-full shadow-md py-4 lg:py-5 px-6'>
         <div className='flex justify-between items-center max-w-screen-lg mx-auto'>
           <div className='tracking-widest font-semibold'>
-            <Link href='/'>####</Link>
+            <Link href='/'>
+              <Home aria-hidden='true'/>
+            </Link>
           </div>
           <nav>
             <ul
